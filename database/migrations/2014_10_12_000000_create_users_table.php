@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('tb_drivers', function (Blueprint $table) {
-            $table->increments('id_driver');
+            $table->increments('id');
             $table->string('nama_driver');
             $table->string('user')->unique();
             $table->timestamp('email_verified_at')->nullable();

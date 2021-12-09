@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'tb_driver',
     ],
 
     /*
@@ -28,7 +28,7 @@ return [
     | here which uses session storage and the Eloquent user provider.
     |
     | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
+    | tb_driver are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | Supported: "session"
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'tb_driver',
         ],
     ],
 
@@ -48,7 +48,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
+    | tb_driver are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | If you have multiple user tables or models you may configure multiple
@@ -60,14 +60,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'tb_driver' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Driver::class,
         ],
 
-        // 'users' => [
+        // 'tb_driver' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'table' => 'tb_driver',
         // ],
     ],
 
@@ -87,8 +87,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'tb_driver' => [
+            'provider' => 'tb_driver',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Driver;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,9 +16,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'email' => 'reindrairawan@gmail.com',
-            'name' => 'Indra irawanto',
+        Driver::create([
+            'user' => 'reindrairawan@gmail.com',
+            'nama_driver' => 'Indra irawanto',
             'password' => Hash::make('secret'),
             'status' => 'aktif',
         ]);

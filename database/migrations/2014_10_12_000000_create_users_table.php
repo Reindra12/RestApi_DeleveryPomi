@@ -13,10 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+        Schema::create('tb_drivers', function (Blueprint $table) {
+            $table->increments('id_driver');
+            $table->string('nama_driver');
+            $table->string('user')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('status')->default('aktif');

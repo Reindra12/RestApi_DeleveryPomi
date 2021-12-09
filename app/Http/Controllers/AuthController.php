@@ -19,7 +19,7 @@ class AuthController extends Controller
 {
    public function login(Request $request){
        $validate = Validator::make($request->all(), [
-           'email' => 'required',
+           'user' => 'required',
            'password' => 'required',
 
        ]);
@@ -34,7 +34,7 @@ class AuthController extends Controller
            ];
            return response()->json($respon, 200);
        }else{
-           $credentials     = request(['email','password']);
+           $credentials     = request(['user','password']);
            $credentials     = Arr::add($credentials,'status','aktif');
            if(!Auth::attempt($credentials)){
                $respon   = [
@@ -47,7 +47,7 @@ class AuthController extends Controller
 
            }
 
-           $user  = User::where ('email', $request->email )->first();
+           $user  = User::where ('user', $request->user )->first();
            if(!Hash::check($request->password, $user->password, []))
            {
                 throw new Exception('Error in Login');

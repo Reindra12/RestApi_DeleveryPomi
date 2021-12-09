@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Driver extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,6 +17,9 @@ class Driver extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = "tb_drivers";
+
     protected $fillable = [
         'nama_driver',
         'user',

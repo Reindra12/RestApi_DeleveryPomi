@@ -17,10 +17,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'user' => 'reindrairawan@gmail.com',
-            'nama_driver' => 'Indra irawanto',
+            'user' => 'reindra',
+            'nama_driver' => 'Indra irawanto2',
             'password' => Hash::make('secret'),
             'status' => 'aktif',
+            'no_ktp' =>'3513181206980001',
         ]);
     }
 }

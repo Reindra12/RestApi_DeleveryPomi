@@ -53,6 +53,9 @@ class AuthController extends Controller
                 throw new Exception('Error in Login');
            }
            $tokenResult = $user->createToken('token-auth')->plainTextToken;
+           $nama =  $user->nama_driver;
+           $id  = $user->id;
+           $nik = $user->no_ktp;
            
            $respon      = [
             'status'     => 'success',
@@ -60,8 +63,13 @@ class AuthController extends Controller
             'errors'     => null,
             'content'    => [
                 'status_code'   => 200,
+                'id'            =>$id,
                 'access_token'  => $tokenResult,
                 'token_type'    => 'Bearer',
+                'nama_driver'   => $nama,
+                'no_ktp'        => $nik,
+               
+
             ],
            ];
             return response()->json($respon, 200);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Driver;
+use App\Models\User;
 use App\Http\Controllers\AuthController;
 
 use Illuminate\Support\Arr;
@@ -47,12 +47,15 @@ class AuthController extends Controller
 
            }
 
-           $Driver  = Driver::where ('user', $request->user )->first();
-           if(!Hash::check($request->password, $Driver->password, []))
+           $user  = User::where ('user', $request->user )->first();
+           if(!Hash::check($request->password, $user->password, []))
            {
                 throw new Exception('Error in Login');
            }
-           $tokenResult = $Driver->createToken('token-auth')->plainTextToken;
+           $tokenResult = $user->createToken('token-auth')->plainTextToken;
+           $nama =  $user->nama_driver;
+           $id  = $user->id;
+           $nik = $user->no_ktp;
            
            $respon      = [
             'status'     => 'success',
@@ -60,8 +63,13 @@ class AuthController extends Controller
             'errors'     => null,
             'content'    => [
                 'status_code'   => 200,
+                'id'            =>$id,
                 'access_token'  => $tokenResult,
                 'token_type'    => 'Bearer',
+                'nama_driver'   => $nama,
+                'no_ktp'        => $nik,
+               
+
             ],
            ];
             return response()->json($respon, 200);
@@ -70,8 +78,8 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        $Driver = auth('sanctum')->Driver();
-        $Driver->currentAccessToken()->delete();
+        $user = auth('sanctum')->user();
+        $user->currentAccessToken()->delete();
         $respon      = [
             'status'     => 'success',
             'msg'        => 'Logout Successfully'

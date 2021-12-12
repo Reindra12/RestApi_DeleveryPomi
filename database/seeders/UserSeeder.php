@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'user' => 'reindra',
+            'user' => 'reindra2',
             'nama_driver' => 'Indra irawanto2',
             'password' => Hash::make('secret'),
             'status' => 'aktif',
